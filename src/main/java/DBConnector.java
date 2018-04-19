@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnector {
-    String url = "jdbc:mysql://localhost:3306/user?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Greece";
+    String url = "jdbc:mysql://localhost:3306/user";
     private final String login = "root";
     private final String password = "root";
 
@@ -24,3 +24,4 @@ public class DBConnector {
         return profiles;
     }
 }
+//100 doors challenge

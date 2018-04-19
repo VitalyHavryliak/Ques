@@ -18,9 +18,9 @@ public class Authentication extends HttpServlet {
             for (Profiles profiles : dbConnector.getAll()) {
                 if(profiles.login.equals(username) && profiles.password.equals(password)){
                     request.setAttribute("isLoggedIn", true);
-                    request.getRequestDispatcher("/FrontEnd/Authentication.jsp").forward(request,response);
+                    request.getRequestDispatcher("/Authentication/index.jsp").forward(request,response);
                 }else {
-                    request.setAttribute("isLoggedIn", "You're not authoaerkjbwr");
+                    request.setAttribute("isLoggedIn", "Not valid login or password.");
                     request.getRequestDispatcher("/FrontEnd/index.jsp").forward(request, response);
                 }
             }
@@ -32,6 +32,6 @@ public class Authentication extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/FrontEnd/Authentication.jsp").forward(request, response);
+        request.getRequestDispatcher("/Authentication/index.jsp").forward(request, response);
     }
 }

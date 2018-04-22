@@ -15,17 +15,10 @@ public class Authentication extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        System.out.println(username);
-
         request.setAttribute("username", username);
         try {
             DBConnector dbConnector = new DBConnector();
             for (Users Users : dbConnector.getAll()) {
-
-                System.out.println(Users.getUsername());
-                System.out.println(Users.getPassword());
-
-
                 if(Users.getUsername().equals(username) && Users.getPassword().equals(password)){
                     request.setAttribute("isLoggedIn", true);
                     System.out.println("Success");
@@ -33,12 +26,10 @@ public class Authentication extends HttpServlet {
                 }else {
                     System.out.println("Failed");
                     request.setAttribute("isLoggedIn", "Not valid login or password.");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

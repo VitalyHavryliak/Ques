@@ -11,7 +11,7 @@ public class MainPage extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher username = request.getRequestDispatcher("username");
         System.out.println(username);
-        request.getRequestDispatcher("/FrontEnd/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

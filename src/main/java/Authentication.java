@@ -9,9 +9,13 @@ import java.sql.SQLException;
 
 @WebServlet(name = "Authentication")
 public class Authentication extends HttpServlet {
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
-        String password = request.getParameter("pass");
+        String password = request.getParameter("password");
+
+        System.out.println(username);
 
         request.setAttribute("username", username);
         try {
@@ -24,10 +28,12 @@ public class Authentication extends HttpServlet {
 
                 if(Users.getUsername().equals(username) && Users.getPassword().equals(password)){
                     request.setAttribute("isLoggedIn", true);
-                    request.getRequestDispatcher("/Authentication/index.jsp").forward(request,response);
+                    System.out.println("Success");
+                    request.getRequestDispatcher("/resources/pages/first/index.jsp").forward(request,response);
                 }else {
+                    System.out.println("Failed");
                     request.setAttribute("isLoggedIn", "Not valid login or password.");
-                    request.getRequestDispatcher("/FrontEnd/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             }
         } catch (SQLException e) {
@@ -39,6 +45,6 @@ public class Authentication extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("isLoggedIn", "You'r not authorized!");
-        request.getRequestDispatcher("/FrontEnd/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

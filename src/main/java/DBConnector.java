@@ -3,15 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnector {
-    //String url = "jdbc:mysql://localhost:3306/user";
-    private final String login = "root";
-    private final String password = "root";
 
     private Connection connection;
 
     public DBConnector() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
-        this.connection = DriverManager.getConnection(Config.url, login, password);
+        //Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        this.connection = DriverManager.getConnection(Config.url, Config.login, Config.password);
     }
     public List<Users> getAll() throws SQLException {
         List<Users> users = new ArrayList<>();
@@ -28,6 +26,10 @@ public class DBConnector {
         }
 
         return users;
+    }
+
+    public boolean hasConnected() throws SQLException {
+        return connection.isValid(100);
     }
 }
 //100 doors challenge

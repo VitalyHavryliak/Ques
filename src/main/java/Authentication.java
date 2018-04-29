@@ -18,6 +18,9 @@ public class Authentication extends HttpServlet {
         request.setAttribute("username", username);
         try {
             DBConnector dbConnector = new DBConnector();
+
+            request.setAttribute("isConnected", true);
+
             for (Users Users : dbConnector.getAll()) {
                 if(Users.getUsername().equals(username) && Users.getPassword().equals(password)){
                     request.setAttribute("isLoggedIn", true);

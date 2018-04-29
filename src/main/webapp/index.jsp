@@ -21,7 +21,8 @@
             <h1 class="fail big" align="center">Opss!</h1>
             <h1 class="fail" align="center">Page not found 4<i onclick="errorAnimation(this);">0</i>4<i class="fab fa-opera transforms" id = "transforms" ></i></h1>
             <div id="forminputs" class="redylogin">
-                <h1 align="center"  class="fail logfor"> Autherezation </h1>
+                <h1 align="center"  class="fail logfor"> Authentication </h1>
+                <h1 align="center"  class="fail logfor"> ${isConnected} </h1>
                 <h1 align="center"  class="fail logfor"> ${isLoggedIn} </h1>
                 <form id=" formses" action="${pageContext.request.contextPath}/login" method="post">
                     <div class="col-auto inp">

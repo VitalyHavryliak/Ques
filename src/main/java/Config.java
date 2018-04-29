@@ -1,5 +1,6 @@
 class Config {
-    static final String url = "jdbc:mysql://localhost:3306/users";
-    static final String login = "ethero";
-    static final String password = "root";
+
+    /*static String url = your server url;
+    static final String login = your username;
+    static final String password = your password;*/
 }

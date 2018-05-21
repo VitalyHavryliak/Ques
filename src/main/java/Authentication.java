@@ -15,6 +15,11 @@ public class Authentication extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        String pageToLoad = "index.jsp";
+
+        String valid = "/resources/pages/index.jsp";
+        String notValid = "index.jsp";
+
         request.setAttribute("username", username);
         try {
             DBConnector dbConnector = new DBConnector();
@@ -25,13 +30,16 @@ public class Authentication extends HttpServlet {
                 if(Users.getUsername().equals(username) && Users.getPassword().equals(password)){
                     request.setAttribute("isLoggedIn", true);
                     System.out.println("Success");
-                    request.getRequestDispatcher("/resources/pages/first/index.jsp").forward(request,response);
+                    pageToLoad = valid;
                 }else {
                     System.out.println("Failed");
                     request.setAttribute("isLoggedIn", "Not valid login or password.");
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    pageToLoad = notValid;
                 }
             }
+
+            request.getRequestDispatcher(pageToLoad).forward(request,response);
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

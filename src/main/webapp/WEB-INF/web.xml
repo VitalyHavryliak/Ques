@@ -13,4 +13,14 @@
         <url-pattern>/login</url-pattern>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Start</servlet-name>
+        <servlet-class>StartQuest</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Start</servlet-name>
+        <url-pattern>/start</url-pattern>
+    </servlet-mapping>
 </web-app>

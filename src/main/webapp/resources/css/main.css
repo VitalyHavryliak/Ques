@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+@import url('https://fonts.googleapis.com/css?family=Vampiro+One');
+@import "reset.css";
+
+body{
+
+}
+
+.fail{
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 40pt;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+#divdel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    transition: all .5s ease;
+    text-align: center;
+
+}
+.redylogin{
+    opacity: 0;
+    z-index: -99;
+}
+#forminputs{
+
+    position: relative;
+    top:30%;
+    left: 50%;
+    transform:translate(-50%,-70%);
+    transition: all .5s ease;
+}
+.buttons{
+    background-color: #212529;
+    color:white;
+    border-radius: 50px;
+    width: 200px;
+    border:none;
+    font-family: 'Fredericka the Great', cursive;
+}
+.inp .input-group input::placeholder {
+    font-family: 'Fredericka the Great', cursive;
+    font-weight: bold;
+    opacity: .5;
+    padding-left: 10px;
+}
+.buttons:hover{
+    background: #212529;
+    color: indianred;
+}
+.buttons:hover .sens{
+
+    left: 20%;
+}
+.buttons .sens{
+    position: relative;
+    left:5%;
+    transition:all .5s ease;
+}
+.inp {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+
+    width:30%;
+    font-family: sans-serif;
+}
+.inp .input-group .input-group-text{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.inp .input-group input {
+    font-family: 'Vampiro One', cursive;
+
+    font-size: 15pt;
+    padding:5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: none;
+}
+.logfor{
+    font-family: 'Fredericka the Great', cursive;
+    padding: 20px;
+}
+
+#divdel{
+    transition: all .5s ease;
+}
+#formLogin{
+    display: none;
+    transform:scale(0);
+    transition: all .5s ease;
+}
+#transforms {
+    border-radius: 50%;
+    transition: all .5s ease;
+    transform: scale(.0, .0);
+}
+.big{
+    font-size: 100pt;
+}
+.all{
+    height: 100vh;
+
+}

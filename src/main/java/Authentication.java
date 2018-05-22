@@ -9,29 +9,44 @@ import java.sql.SQLException;
 
 @WebServlet(name = "Authentication")
 public class Authentication extends HttpServlet {
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
-        String password = request.getParameter("pass");
+        String password = request.getParameter("password");
+
+        String pageToLoad = "index.jsp";
+
+        String valid = "/resources/pages/index.jsp";
+        String notValid = "index.jsp";
+
         request.setAttribute("username", username);
         try {
             DBConnector dbConnector = new DBConnector();
-            for (Profiles profiles : dbConnector.getAll()) {
-                if(profiles.login.equals(username) && profiles.password.equals(password)){
+
+            request.setAttribute("isConnected", true);
+
+            for (Users Users : dbConnector.getAll()) {
+                if(Users.getUsername().equals(username) && Users.getPassword().equals(password)){
                     request.setAttribute("isLoggedIn", true);
-                    request.getRequestDispatcher("/Authentication/index.jsp").forward(request,response);
+                    System.out.println("Success");
+                    pageToLoad = valid;
                 }else {
+                    System.out.println("Failed");
                     request.setAttribute("isLoggedIn", "Not valid login or password.");
-                    request.getRequestDispatcher("/FrontEnd/index.jsp").forward(request, response);
+                    pageToLoad = notValid;
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+
+            request.getRequestDispatcher(pageToLoad).forward(request,response);
+
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Authentication/index.jsp").forward(request, response);
+        request.setAttribute("isLoggedIn", "You'r not authorized!");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }
